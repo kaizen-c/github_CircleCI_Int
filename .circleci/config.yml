@@ -1,18 +1,15 @@
 version: 2
 jobs:
   Build Docker Image:
-    docker:
-      - image: circleci/cci-demo-docker-primary:0.0.1
-      #  auth:
-      #    username: mydockerhub-user
-      #    password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    machine: true
     steps:
       - checkout
+      - run: |
+          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin   
       - run: echo "Downloading Docker Image"
       - run: docker info
-      - run: docker build -t index.docker.io/cdadock/repo99/nodecircle .
+      - run: docker build -t inodecircle .
       - run: docker images
-      - run: cat app.js
 
 
 workflows:
