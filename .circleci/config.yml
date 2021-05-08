@@ -11,7 +11,7 @@ jobs:
       - run: echo "Downloading Docker Image"
       - run: npm install
       - run: nohup node app.js &>/dev/null &
-      - run: wget -O http://localhost:8080
+      - run: curl http://localhost:8080
      # - run: wget http://localhost:8080
       #- persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory
