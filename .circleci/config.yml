@@ -10,9 +10,9 @@ jobs:
       - run: docker info
       - run: docker build -t inodecircle .
       - run: docker images
-      - run: docker tag inodecircle:latest cdadock/circle_projects:inodecircle$CIRCLE_WORKFLOW_JOB_ID
+      - run: docker tag inodecircle:latest cdadock/circle_projects:inodecircle_$CIRCLE_WORKFLOW_JOB_ID
       - run: docker images
-      - run: docker push cdadock/circle_projects:inodecircle$CIRCLE_WORKFLOW_JOB_ID
+      - run: docker push cdadock/circle_projects:inodecircle_$CIRCLE_WORKFLOW_JOB_ID
 
 
 workflows:
