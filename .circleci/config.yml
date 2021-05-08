@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: echo "Downloading Docker Image"
       - run: npm install
-      - run: node app.js & wget -O http://localhost:8080
+      - run: node app.js & wget http://localhost:8080
      # - run: wget http://localhost:8080
       #- persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory
