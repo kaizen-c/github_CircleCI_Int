@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: echo "Downloading Docker Image"
       - run: npm install
-      - run: & node app.js 
+      - run: nohup node app.js &>/dev/null &
       - run: wget -O http://localhost:8080
      # - run: wget http://localhost:8080
       #- persist_to_workspace:
