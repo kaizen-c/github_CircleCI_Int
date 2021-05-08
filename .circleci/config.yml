@@ -12,12 +12,12 @@ jobs:
       - run: npm install
       - run: node app.js & wget http://localhost:8080
      # - run: wget http://localhost:8080
-      - persist_to_workspace:
+      #- persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory
-          root: my_workspace
+          #root: my_workspace
           # Must be relative path from root
-          paths:
-            - echo-output
+          #paths:
+          #  - echo-output
 
 workflows:
   version: 2
