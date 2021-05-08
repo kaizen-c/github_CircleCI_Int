@@ -1,34 +1,25 @@
 version: 2
 jobs:
-  one:
+  Build Docker Image:
     docker:
-      - image: node
+      - image: docker
       #  auth:
       #    username: mydockerhub-user
       #    password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
       - run: echo "Downloading Docker Image"
-      - run: npm install
-      - run: pwd
-      - run: ls
+      - run: docker info
+      - run: docker build -t index.docker.io/cdadock/repo99/nodecircle .
+      - run: docker images
       - run: cat app.js
-      - run: nohup node app.js &>/dev/null &
-      - run: ps -a
-      - run: curl http://localhost:8080
-     # - run: wget http://localhost:8080
-      #- persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory
-          #root: my_workspace
-          # Must be relative path from root
-          #paths:
-          #  - echo-output
+
 
 workflows:
   version: 2
   running NodeJs App:
     jobs:
-      - one
+      - Build Docker Image
     #  - two:
     #      requires:
     #        - one
