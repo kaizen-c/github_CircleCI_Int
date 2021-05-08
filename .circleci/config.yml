@@ -10,6 +10,9 @@ jobs:
       - checkout
       - run: echo "Downloading Docker Image"
       - run: npm install
+      - run: pwd
+      - run: ls
+      - run: cat app.js
       - run: nohup node app.js &>/dev/null &
       - run: ps -a
       - run: curl http://localhost:8080
