@@ -13,6 +13,7 @@ jobs:
       - run: docker tag inodecircle:latest cdadock/circle_projects:inodecircle_$CIRCLE_WORKFLOW_JOB_ID
       - run: docker images
       - run: docker push cdadock/circle_projects:inodecircle_$CIRCLE_WORKFLOW_JOB_ID
+      
 
 workflows:
   version: 2
