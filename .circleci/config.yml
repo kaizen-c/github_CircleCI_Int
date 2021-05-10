@@ -13,16 +13,17 @@ jobs:
       - run: docker tag inodecircle:latest cdadock/circle_projects:inodecircle_$CIRCLE_WORKFLOW_JOB_ID
       - run: docker images
       - run: docker push cdadock/circle_projects:inodecircle_$CIRCLE_WORKFLOW_JOB_ID
-      - persist_to_workspace:
-          root: .
-          paths:
-            - "Dockerfile"
+      #- persist_to_workspace:
+      #    root: .
+      #    paths:
+      #      - "Dockerfile"
 
   Push-to-Heroku:
     machine: true
     steps:
-      - attach_workspace:
-          at: .
+      #- attach_workspace:
+      #    at: .
+      - checkout
       - run:
           name: Build and push Docker image to Heroku
           command: |
