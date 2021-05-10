@@ -23,7 +23,13 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: ls
+      - run:
+          name: Build and push Docker image to Heroku
+          command: |
+              sudo curl https://cli-assets.heroku.com/install.sh | sh
+              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a ${HEROKU_APP_NAME} web
+              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a ${HEROKU_APP_NAME} web 
 
 
 workflows:
