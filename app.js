@@ -4,7 +4,7 @@ const router = express.Router();
 
 const path = __dirname + '/views/';
 //const port = 8080;
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 router.use(function (req,res,next) {
   console.log('/' + req.method);
