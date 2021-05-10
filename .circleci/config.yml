@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  Build Docker Image:
+  Build_AND_Push_Docker_Image:
     machine: true
     steps:
       - checkout
@@ -13,13 +13,24 @@ jobs:
       - run: docker tag inodecircle:latest cdadock/circle_projects:inodecircle_$CIRCLE_WORKFLOW_JOB_ID
       - run: docker images
       - run: docker push cdadock/circle_projects:inodecircle_$CIRCLE_WORKFLOW_JOB_ID
-      
+      - persist_to_workspace:
+          root: .
+          paths:
+            - "Dockerfile"
+
+  Push-to-Heroku:
+    machine: true
+    steps:
+      - attach_workspace:
+          at: .
+      - run: ls
+
 
 workflows:
   version: 2
   running NodeJs App:
     jobs:
-      - Build Docker Image
-    #  - two:
-    #      requires:
-    #        - one
+      - Build_AND_Push_Docker_Image
+      - Push-to-Heroku:
+          requires:
+            - Build_AND_Push_Docker_Image
