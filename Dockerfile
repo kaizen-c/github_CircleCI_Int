@@ -10,7 +10,7 @@ USER node
 
 RUN npm install
 
-RUN npm install mongoose
+RUN npm install mongoose ejs
 
 COPY --chown=node:node . .
 
