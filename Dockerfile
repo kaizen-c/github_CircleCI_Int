@@ -10,6 +10,8 @@ USER node
 
 RUN npm install
 
+RUN npm install mongoose
+
 COPY --chown=node:node . .
 
 EXPOSE 3000
