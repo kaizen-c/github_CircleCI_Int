@@ -10,6 +10,8 @@ USER node
 
 RUN npm install
 
+RUN npm install --save @sentry/node @sentry/tracing
+
 #RUN npm install mongoose ejs
 
 COPY --chown=node:node . .
