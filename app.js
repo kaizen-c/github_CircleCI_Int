@@ -28,7 +28,7 @@ const transaction = Sentry.startTransaction({
 
 setTimeout(() => {
   try {
-    foo();
+   // foo();
     // app.js code
     const path = __dirname + '/views/';
     const port = process.env.PORT || 3000;
